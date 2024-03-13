@@ -1,0 +1,47 @@
+graph LR
+A[Utilisateur non authentifié] --> B{S'inscrire}
+B --> C{Formulaire d'inscription}
+C --> D{Inscription réussie}
+D --> E[Accueil (connecté)]
+C --> F{Echec inscription}
+F --> B
+A --> B
+B --> G{S'authentifier}
+G --> H{Formulaire de connexion}
+H --> D
+H --> I{Echec authentification}
+I --> G
+
+subgraph Utilisateur authentifié
+J[Accueil (connecté)] --> K{Créer un événement}
+K --> L{Choisir En ligne/Sur place}
+L --> M{En ligne}
+M --> N{Formulaire de création}
+N --> O{Création réussie}
+O --> J
+L --> P{Sur place}
+P --> N
+N --> O
+J --> Q{Mes événements}
+Q --> R{Sélectionner un événement}
+R --> S{Détails de l'événement}
+J --> T{Filtrer la liste}
+T --> J
+J --> U{Liste des événements}
+U --> R
+R --> V{Ajouter au panier}
+V --> W{Panier}
+U --> X{Enregistrer l'événement}
+W --> Y{Valider le panier}
+Y --> Z{Paiement}
+Z --> AA{Confirmation d'inscription}
+AA --> BB{Mes inscriptions}
+BB --> R
+R --> CC{Annulation}
+J --> DD{Contact}
+DD --> EE{Formulaire de contact}
+EE --> FF{Envoi réussi}
+FF --> J
+J --> GG{Déconnexion}
+GG --> A
+end
